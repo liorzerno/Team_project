@@ -7,7 +7,7 @@ import random
 flag_row = consts.BOARD_ROWS - consts.FLAG_ROWS
 flag_col = consts.BOARD_COLS - consts.FLAG_COLS
 field_grid = []
-mines_list = []
+
 
 def field_initialization():
     """
@@ -21,28 +21,19 @@ def field_initialization():
         for col in range(consts.BOARD_COLS):
             new.append(create_box(row, col))
         field_grid.append(new)
-        print(new)
         new = []
 
+    put_mine_on_field()
     return field_grid
 
 def create_box(row, col):
-    global field_grid
-    global mines_list
-    tup = (row, col)
-    is_mine = False
-
-    for mine in mines_list:
-        mine_cols = mine[1]
-
-        if tup[0] == mine[0] and tup[1] in mines_list:
-            is_mine = True
-
-    if is_mine:
-        box = {"x_place": row, "y_place": col, "type": "mine"}
-    else:
-        box = {"x_place": row, "y_place": col, "type": "empty"}
-
+    """
+    Creates a box given a row and column.
+    :param row: a row index.
+    :param col: a col index.
+    :return: a box dictionary.
+    """
+    box = {"x_place": row, "y_place": col, "type": "empty"}
     return box
 
 
@@ -51,7 +42,7 @@ def mine_randomizer():
     Makes a list of mine's index.
     :return: a list of indexes that contain a mine.
     """
-    global mines_list
+    mines_list = []
 
     for i in range(consts.MINES_COUNT):
         is_existing = False
@@ -59,11 +50,48 @@ def mine_randomizer():
         while not is_existing:
             rnd_row = random.randint(0, consts.BOARD_ROWS - 1)
             rnd_col = random.randint(0, consts.BOARD_COLS - 3)
-            tup = (rnd_row, [rnd_col, rnd_col + 1, rnd_col + 2])
 
-            if tup not in mines_list:
+            col_list = [rnd_col, rnd_col + 1, rnd_col + 2]
+            tup = (rnd_row, col_list)
+
+            if not mine_index_checker(mines_list, rnd_row, rnd_col):
                 mines_list.append(tup)
                 is_existing = True
+    return mines_list
+
+def mine_index_checker(mines_list, row, col):
+    """
+    Checks if there is already a mine at the given row and col.
+    :param mines_list: a list of mine's index.
+    :param row: a row index.
+    :param col: a col index.
+    :return: boolean.
+    """
+    for mine in mines_list:
+        mine_row = mine[0]
+        if mine_row == row:
+            mine_cols = mine[1]
+            if col in mine_cols or col + 1 in mine_cols or col + 2 in mine_cols:
+                return True
+    return False
+
+def put_mine_on_field():
+    """
+    Puts a mine type according to the mine list.
+    :return: None
+    """
+    global field_grid
+    mine_list = mine_randomizer()
+
+    for mine in mine_list:
+        row = mine[0]
+        col1 = mine[1][0]
+        col2 = mine[1][1]
+        col3 = mine[1][2]
+
+        field_grid[row][col1] = {"x_place": row, "y_place": col1, "type": "mine"}
+        field_grid[row][col2] = {"x_place": row, "y_place": col2, "type": "mine"}
+        field_grid[row][col3] = {"x_place": row, "y_place": col3, "type": "mine"}
 
 
 def is_flag():
@@ -72,4 +100,4 @@ def is_flag():
 def is_mine():
     pass
 
-field_grid = field_initialization()
+print(field_initialization())
