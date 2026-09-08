@@ -16,16 +16,16 @@ def draw_game(game_state):
 
 
 #image display
-def create_bush(grass_img):
+def create_bush():
     grass_screen = pygame.image.load('grass.png')
     grass_screen = pygame.transform.scale(grass_screen, consts.GRASS_SIZE)
     grass_rect=grass_screen.get_rect()
     grass_list=[]
 
     for i in range(consts.MINES_COUNT):
-        X_location = random.randint(0, consts.WINDOW_WIDTH)
-        Y_location = random.randint(0, consts.WINDOW_HEIGHT)
-        grass_list.append((X_location,Y_location))
+        x_location = random.randint(0, consts.WINDOW_WIDTH)
+        y_location = random.randint(0, consts.WINDOW_HEIGHT)
+        grass_list.append((x_location,y_location))
 
 
     while 1:
