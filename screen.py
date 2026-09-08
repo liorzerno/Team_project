@@ -16,7 +16,7 @@ def draw_game(game_state):
 
 
 #image display
-def create_bush():
+def create_bush(grass_img):
     grass_screen = pygame.image.load('grass.png')
     grass_screen = pygame.transform.scale(grass_screen, consts.GRASS_SIZE)
     grass_rect=grass_screen.get_rect()
