@@ -1,8 +1,9 @@
 import consts
 import screen
+import pygame
 
 state = {
-        # "original_bush": screen.create_bush(consts.GRASS_IMG),
+        "original_bush": screen.create_bush(consts.GRASS_IMG),
         "is_window_open": True,
         "state": consts.RUNNING_STATE
     }
@@ -11,6 +12,7 @@ state = {
 
 
 def print_hi(name):
+    pygame.init()
     while state["is_window_open"]:
         screen.draw_game(state)
 
