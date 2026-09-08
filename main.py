@@ -1,12 +1,18 @@
-# This is a sample Python script.
+import consts
+import screen
 
+state = {
+        # "original_bush": screen.create_bush(consts.GRASS_IMG),
+        "is_window_open": True,
+        "state": consts.RUNNING_STATE
+    }
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
 def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    while state["is_window_open"]:
+        screen.draw_game(state)
 
 
 # Press the green button in the gutter to run the script.
