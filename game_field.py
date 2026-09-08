@@ -24,6 +24,7 @@ def field_initialization():
         new = []
 
     put_mine_on_field()
+    add_flag()
     return field_grid
 
 def create_box(row, col):
@@ -94,10 +95,18 @@ def put_mine_on_field():
         field_grid[row][col3] = {"x_place": row, "y_place": col3, "type": "mine"}
 
 
-def is_flag():
-    pass
+def add_flag():
+    """
+    Adds a flag on the board.
+    :return: None
+    """
+    global field_grid
+    rows = consts.BOARD_ROWS
+    cols = consts.BOARD_COLS
 
-def is_mine():
-    pass
+    for i in range(rows-consts.FLAG_ROWS, rows):
+        for j in range(cols-consts.FLAG_COLS, cols):
+            field_grid[i][j]["type"] = "flag"
+
 
 print(field_initialization())
