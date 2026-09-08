@@ -14,6 +14,7 @@ def draw_game(game_state):
     create_bush(game_state["bush"])
     soldier_display(game_state["soldier"])
     draw_message()
+    drawGrid()
     flag_display(game_state["flag"])
     pygame.display.flip()
 
@@ -62,7 +63,12 @@ def draw_message():
     pygame.display.flip()
 
 #enter mode
-# def enter_screen():
+def drawGrid():
+    blockSize = 20 #Set the size of the grid block
+    for x in range(0, consts.WINDOW_WIDTH, blockSize):
+        for y in range(0, consts.WINDOW_HEIGHT, blockSize):
+            rect = pygame.Rect(x, y, blockSize, blockSize)
+            pygame.draw.rect(screen, consts.WHITE, rect, 1)
 
 
 
