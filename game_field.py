@@ -61,8 +61,8 @@ def mine_randomizer():
             rnd_col = random.randint(0, consts.BOARD_COLS - 3)
             tup = (rnd_row, [rnd_col, rnd_col + 1, rnd_col + 2])
 
-            if tup not in mines_index_list:
-                mines_index_list.append(tup)
+            if tup not in mines_list:
+                mines_list.append(tup)
                 is_existing = True
 
 
