@@ -1,8 +1,9 @@
 import pygame
+from pygame import image
+
 import consts
 import random
 import sys
-
 
 pygame.init()
 
@@ -11,11 +12,13 @@ screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
 #drawing the whole game
 def draw_game(game_state):
     screen.fill(consts.BACKGROUND_COLOR)
+    flag_display(game_state["flag"])
     create_bush(game_state["bush"])
-    soldier_display(game_state["soldier"])
+    soldier_display(0, 0)
     draw_message()
     # drawGrid()
-    flag_display(game_state["flag"])
+
+
     pygame.display.flip()
 
 #bush display randomly
@@ -47,19 +50,20 @@ def flag_display(flag_img):
     pygame.display.flip()
 
 #display of soldier
-def soldier_display(soldier_img):
+def soldier_display( x, y):
     soldier_screen = pygame.image.load('soldier.png')
     soldier_screen = pygame.transform.scale(soldier_screen, consts.SOLDIER_SIZE)
     soldier_rect = soldier_screen.get_rect()
     screen.blit(soldier_screen, soldier_rect)
-    pygame.display.flip()
+    #pygame.display.flip()
 
 #welcome text
 def draw_message():
+    global screen
     font = pygame.font.SysFont(consts.FONT_NAME, consts.WELCOME_FONT_SIZE)
-    text_img = font.render(consts.WELCOME_MESSAGE, True, consts.WHITE)
-    text_rect = text_img.get_rect()
-    screen.blit(text_img, text_rect)
+    text_surface = font.render(consts.WELCOME_MESSAGE,True,  consts.WHITE)
+    text_rect = text_surface.get_rect()
+    screen.blit(text_surface, text_rect)
     pygame.display.flip()
 
 #enter mode
