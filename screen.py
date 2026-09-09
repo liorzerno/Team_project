@@ -24,7 +24,7 @@ def draw_game(game_state):
 def draw_night_mode():
     draw_grid()
     soldier_night_display(0, 0)
-    pygame.display.update()
+    pygame.display.flip()
 
 def draw_grid():
     block_size = 20
@@ -84,13 +84,6 @@ def draw_message(message, color, font_size):
     text_rect = text_surface.get_rect()
     screen.blit(text_surface, text_rect)
 
-#enter mode
-# def drawGrid():
-#     blockSize = 20 #Set the size of the grid block
-#     for x in range(0, consts.WINDOW_WIDTH, blockSize):
-#         for y in range(0, consts.WINDOW_HEIGHT, blockSize):
-#             rect = pygame.Rect(x, y, blockSize, blockSize)
-#             pygame.draw.rect(screen, consts.WHITE, rect, 1)
 
 
 

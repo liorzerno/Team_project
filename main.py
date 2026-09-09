@@ -4,6 +4,11 @@ from itertools import count
 import consts
 import screen
 import pygame
+import time
+
+from Team_project.consts import WHITE
+from Team_project.screen import draw_game
+
 x = 0
 y = 0
 state = {
@@ -27,12 +32,15 @@ def main():
     pygame.init()
 
     while state["is_window_open"]:
+        screen.draw_game(state)
         handle_user_events()
+
+
 
 def handle_user_events():
 
     for event in pygame.event.get():
-        #
+
         if event.type == pygame.QUIT:
             state["is_window_open"] = False
 
@@ -41,11 +49,9 @@ def handle_user_events():
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
-                print("Key RETURN has been pressed")
                 screen.draw_night_mode()
-            else:
+                time.sleep(1)
                 screen.draw_game(state)
-
 
 
 if __name__ == '__main__':
