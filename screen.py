@@ -21,6 +21,20 @@ def draw_game(game_state):
 
 
     pygame.display.flip()
+def draw_night_mode():
+
+    draw_grid()
+    pygame.display.update()
+
+def draw_grid():
+    block_size = 20
+    screen.fill(consts.BLACK)
+    for x in range(block_size, consts.WINDOW_WIDTH, block_size):
+        pygame.draw.line(screen, consts.BLOCK_COLOR, (x, 0), (x, consts.WINDOW_HEIGHT))
+
+    for y in range(block_size, consts.WINDOW_HEIGHT, block_size):
+        pygame.draw.line(screen, consts.BLOCK_COLOR, (0, y), (consts.WINDOW_WIDTH, y))
+
 
 #bush display randomly
 def create_bush():
