@@ -12,17 +12,18 @@ screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
 #drawing the whole game
 def draw_game(game_state):
     screen.fill(consts.BACKGROUND_COLOR)
-    flag_display(game_state["flag"])
-    create_bush(game_state["bush"])
+    draw_message(consts.WELCOME_MESSAGE, consts.WELCOME_COLOR, consts.WELCOME_FONT_SIZE)
     soldier_display(0, 0)
-    draw_message()
+    flag_display()
+    create_bush()
+
     # drawGrid()
 
 
     pygame.display.flip()
 
 #bush display randomly
-def create_bush(grass_img):
+def create_bush():
     grass_screen = pygame.image.load('grass.png')
     grass_screen = pygame.transform.scale(grass_screen, consts.GRASS_SIZE)
     grass_rect=grass_screen.get_rect()
@@ -42,12 +43,11 @@ def create_bush(grass_img):
         pygame.display.flip()
 
 #display of flag
-def flag_display(flag_img):
-    screen.fill(consts.BACKGROUND_COLOR)
+def flag_display():
+    #screen.fill(consts.BACKGROUND_COLOR)
     flag_screen = pygame.image.load('flag.png')
     flag_screen = pygame.transform.scale(flag_screen, consts.FLAG_SIZE)
     screen.blit(flag_screen, (900,420,80,60))
-    pygame.display.flip()
 
 #display of soldier
 def soldier_display( x, y):
@@ -55,16 +55,14 @@ def soldier_display( x, y):
     soldier_screen = pygame.transform.scale(soldier_screen, consts.SOLDIER_SIZE)
     soldier_rect = soldier_screen.get_rect()
     screen.blit(soldier_screen, soldier_rect)
-    #pygame.display.flip()
 
 #welcome text
-def draw_message():
+def draw_message(message, color, font_size):
     global screen
-    font = pygame.font.SysFont(consts.FONT_NAME, consts.WELCOME_FONT_SIZE)
-    text_surface = font.render(consts.WELCOME_MESSAGE,True,  consts.WHITE)
+    font = pygame.font.SysFont(consts.FONT_NAME, font_size)
+    text_surface = font.render(message,True, color)
     text_rect = text_surface.get_rect()
     screen.blit(text_surface, text_rect)
-    pygame.display.flip()
 
 #enter mode
 # def drawGrid():
