@@ -5,6 +5,8 @@ import consts
 import random
 import sys
 
+from Team_project import game_field
+
 pygame.init()
 
 screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
@@ -22,10 +24,11 @@ def draw_game(game_state):
 def draw_night_mode():
     draw_grid()
     soldier_night_display(0, 0)
+    # draw_mines()
     pygame.display.flip()
 
 def draw_grid():
-    block_size = 20
+    block_size = consts.CELL_SIZE
     screen.fill(consts.BLACK)
     for x in range(block_size, consts.WINDOW_WIDTH, block_size):
         pygame.draw.line(screen, consts.BLOCK_COLOR, (x, 0), (x, consts.WINDOW_HEIGHT))
@@ -77,6 +80,16 @@ def draw_message(message, color, font_size):
     text_rect = text_surface.get_rect()
     screen.blit(text_surface, text_rect)
 
+# def draw_mines():
+#     #x = 3* 20 y = 1*20
+#     mines_list = game_field.mine_randomizer()
+#
+#     mine_screen = pygame.image.load('mine.png')
+#     mine_screen = pygame.transform.scale(mine_screen, consts.SOLDIER_SIZE)
+#
+#     for mine in mines_list:
+#         mine_y= mine[1]
+#         screen.blit(mine_screen, (mine[0][0] * 60, mine_y[0] * 20))
 
 
 

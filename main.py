@@ -5,10 +5,6 @@ import consts
 import screen
 import pygame
 import time
-
-from Team_project.consts import WHITE
-from Team_project.screen import draw_game
-
 x = 0
 y = 0
 state = {
@@ -17,16 +13,6 @@ state = {
         "state": consts.RUNNING_STATE,
         "soldier_moving": False
     }
-def put_mines_in_place(field_grid):
-    #finds the start of the mine
-    # returns a list of where the image needs to be inserted
-    insert_image=[]
-    for rows in range (consts.BOARD_ROWS - 1):
-        for col in range (consts.BOARD_COLS - 3):
-            if field_grid[rows][col]["type"] == "mine" and field_grid[rows][col+1]["type"] == "mine" and field_grid[rows][col+2]["type"] == "mine":
-                insert_image.append([rows,col])
-    return insert_image
-
 
 def main():
     pygame.init()
