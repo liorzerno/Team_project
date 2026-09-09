@@ -22,8 +22,8 @@ def draw_game(game_state):
 
     pygame.display.flip()
 def draw_night_mode():
-
     draw_grid()
+    soldier_night_display(0, 0)
     pygame.display.update()
 
 def draw_grid():
@@ -66,6 +66,12 @@ def flag_display():
 #display of soldier
 def soldier_display( x, y):
     soldier_screen = pygame.image.load('soldier.png')
+    soldier_screen = pygame.transform.scale(soldier_screen, consts.SOLDIER_SIZE)
+    soldier_rect = soldier_screen.get_rect()
+    screen.blit(soldier_screen, soldier_rect)
+
+def soldier_night_display( x, y):
+    soldier_screen = pygame.image.load('soldier_night.png')
     soldier_screen = pygame.transform.scale(soldier_screen, consts.SOLDIER_SIZE)
     soldier_rect = soldier_screen.get_rect()
     screen.blit(soldier_screen, soldier_rect)
