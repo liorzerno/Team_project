@@ -32,6 +32,7 @@ def main():
     pygame.init()
 
     while state["is_window_open"]:
+        screen.draw_game(state)
         handle_user_events()
 
 
