@@ -20,11 +20,11 @@ def put_mines_in_place(field_grid):
     return insert_image
 
 
-# def main():
-#     pygame.init()
-#     while state["is_window_open"]:
-#         screen.draw_game(state)
-#
-# if __name__ == '__main__':
-#     main()
+def main():
+    pygame.init()
+    while state["is_window_open"]:
+        screen.draw_game(state)
+
+if __name__ == '__main__':
+    main()
 
