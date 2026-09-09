@@ -53,13 +53,9 @@ def create_bush():
         y_location = random.randint(0, consts.WINDOW_HEIGHT-30)
         grass_list.append((x_location,y_location))
 
-    # while 1:
-    #     for event in pygame.event.get():
-    #         if event.type == pygame.QUIT:
-    #             sys.exit()
-    #     for i in grass_list:
-    #         screen.blit(grass_screen,i,grass_rect)
-    #     pygame.display.flip()
+    for i in grass_list:
+        screen.blit(grass_screen, i, grass_rect)
+        pygame.display.flip()
 
 #display of flag
 def flag_display():

@@ -30,12 +30,10 @@ def put_mines_in_place(field_grid):
 
 def main():
     pygame.init()
+    screen.draw_game(state)
 
     while state["is_window_open"]:
-        screen.draw_game(state)
         handle_user_events()
-
-
 
 def handle_user_events():
 
