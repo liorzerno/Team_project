@@ -1,3 +1,6 @@
+import sys
+from itertools import count
+
 import consts
 import screen
 import pygame
@@ -22,8 +25,28 @@ def put_mines_in_place(field_grid):
 
 def main():
     pygame.init()
+
     while state["is_window_open"]:
-        screen.draw_game(state)
+        handle_user_events()
+
+def handle_user_events():
+
+    for event in pygame.event.get():
+        #
+        if event.type == pygame.QUIT:
+            state["is_window_open"] = False
+
+        elif state["state"] != consts.RUNNING_STATE:
+            continue
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                print("Key RETURN has been pressed")
+                screen.draw_night_mode()
+            else:
+                screen.draw_game(state)
+
+
 
 if __name__ == '__main__':
     main()

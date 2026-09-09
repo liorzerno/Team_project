@@ -16,7 +16,7 @@ def draw_game(game_state):
     soldier_display(0, 0)
     flag_display()
     create_bush()
-
+    pygame.display.update()
     # drawGrid()
 
 
