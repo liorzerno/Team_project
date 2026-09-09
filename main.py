@@ -18,7 +18,7 @@ state = {
         "soldier_moving": False
     }
 def put_mines_in_place(field_grid):
-    #findes the start of the mine
+    #finds the start of the mine
     # returns a list of where the image needs to be inserted
     insert_image=[]
     for rows in range (consts.BOARD_ROWS - 1):
@@ -47,8 +47,6 @@ def handle_user_events():
                 screen.draw_night_mode()
                 time.sleep(1)
                 screen.draw_game(state)
-                print("here")
-
 
 
 

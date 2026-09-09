@@ -12,19 +12,12 @@ screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
 #drawing the whole game
 def draw_game(game_state):
     screen.fill(consts.BACKGROUND_COLOR)
-    print(1)
     draw_message(consts.WELCOME_MESSAGE, consts.WELCOME_COLOR, consts.WELCOME_FONT_SIZE)
-    print(2)
     soldier_display(0, 0)
-    print(3)
     flag_display()
-    print(4)
     create_bush()
-    print(5)
-    #pygame.display.update()
-    # drawGrid()
+
     pygame.display.flip()
-    print(6)
 
 def draw_night_mode():
     draw_grid()
@@ -59,7 +52,6 @@ def create_bush():
 
 #display of flag
 def flag_display():
-    #screen.fill(consts.BACKGROUND_COLOR)
     flag_screen = pygame.image.load('flag.png')
     flag_screen = pygame.transform.scale(flag_screen, consts.FLAG_SIZE)
     screen.blit(flag_screen, (900,420,80,60))
