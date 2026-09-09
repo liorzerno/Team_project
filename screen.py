@@ -12,15 +12,20 @@ screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
 #drawing the whole game
 def draw_game(game_state):
     screen.fill(consts.BACKGROUND_COLOR)
+    print(1)
     draw_message(consts.WELCOME_MESSAGE, consts.WELCOME_COLOR, consts.WELCOME_FONT_SIZE)
+    print(2)
     soldier_display(0, 0)
+    print(3)
     flag_display()
+    print(4)
     create_bush()
-    pygame.display.update()
+    print(5)
+    #pygame.display.update()
     # drawGrid()
-
-
     pygame.display.flip()
+    print(6)
+
 def draw_night_mode():
     draw_grid()
     soldier_night_display(0, 0)
@@ -48,13 +53,13 @@ def create_bush():
         y_location = random.randint(0, consts.WINDOW_HEIGHT-30)
         grass_list.append((x_location,y_location))
 
-    while 1:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-        for i in grass_list:
-            screen.blit(grass_screen,i,grass_rect)
-        pygame.display.flip()
+    # while 1:
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.QUIT:
+    #             sys.exit()
+    #     for i in grass_list:
+    #         screen.blit(grass_screen,i,grass_rect)
+    #     pygame.display.flip()
 
 #display of flag
 def flag_display():

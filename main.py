@@ -32,7 +32,6 @@ def main():
     pygame.init()
 
     while state["is_window_open"]:
-        screen.draw_game(state)
         handle_user_events()
 
 
@@ -44,14 +43,14 @@ def handle_user_events():
         if event.type == pygame.QUIT:
             state["is_window_open"] = False
 
-        elif state["state"] != consts.RUNNING_STATE:
-            continue
-
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 screen.draw_night_mode()
                 time.sleep(1)
                 screen.draw_game(state)
+                print("here")
+
+
 
 
 if __name__ == '__main__':
